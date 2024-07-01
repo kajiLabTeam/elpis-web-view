@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {
+  Box,
+  Center,
+  Text,
+} from "@chakra-ui/react";
+import { User } from "./types/User";
+import { HomeCard } from "./component/HomeCard/HomeCard";
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const users: User[] = [
+    { id: "1", name: "山田太郎", from: "東京", role: "admin" },
+    { id: "2", name: "田中花子", from: "大阪", role: "user" },
+    { id: "3", name: "佐藤次郎", from: "福岡", role: "user" },
+  ];
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Box m={6} width={"100%"}>
+        <Text fontSize="4xl">StudentRoom🏠</Text>
+
+        <Center>
+          <HomeCard users={users} />
+        </Center>
+      </Box>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
